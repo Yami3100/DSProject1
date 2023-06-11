@@ -40,4 +40,13 @@ Revenue = ([stays_in_week_nights]+[stays_in_weekend_nights])*([adr]*[Discount]+[
 ```
 Cost se refere ao custo diário das refeições durante a estadia, mas o desconto não se aplica. Desse modo, temos: "Estadia em dias" * "(Taxa diária + Refeições Diárias)", obtendo uma receita precisa. 
 
-Dados devidamente transformados, iniciou-se o processo de design do dashboard para a visualização dos dados. Medidas e filtros foram adicionados.
+Dados devidamente transformados, iniciou-se o processo de design do dashboard para a visualização dos dados. Medidas e filtros foram adicionados. Uma série temporal foi adicionada para confrontar a receita ganha entre City Hotel e Resort Hotel ao longo do tempo. Nota-se que, em 2019, de Julho ao final de Agosto, o Resort Hotel obteve alta histórica. Cabe investigar os eventos durante esta época que possam ter contribuído.
+
+Para responder se vale a pena expandir o estacionamento, foi criada uma medida acerca da porcentagem de vagas de estacionamento requisitadas. 
+```
+Porcentagem de Estacionamento = SUM(Consulta1[required_car_parking_spaces])/[Noites totais]
+``` 
+Onde [Noites totais] é:
+```
+Noites totais = SUM(Consulta1[stays_in_week_nights])+(SUM(Consulta1[stays_in_weekend_nights]))
+```
